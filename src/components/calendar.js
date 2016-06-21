@@ -16,6 +16,7 @@ class Calendar extends React.Component {
     var currentWeekDay = todaysDate.getDay();
 
     var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
+    console.log("first date: " + firstDateOfWeek);
     // Gör en array där alla datum jag vill komma åt finns.
     var weekArray = this.getWeekArray(firstDateOfWeek);
     var self = this;
@@ -28,32 +29,18 @@ class Calendar extends React.Component {
       var newTimeSlots = [];
       for(var index in cal){
         // Kolla om denna dag ska läggas till
-        console.log("index: " +  index);
-        console.log("weekArray[0]" + self.convertDateToDbString(weekArray[0]));
-        console.log("weekArray[6]" + self.convertDateToDbString(weekArray[6]));
-
-
-
+        console.log(index);
         if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
           console.log(index + " går in");
           newTimeSlots.push({index: cal[index]});
-          console.log("index: " + index);
-
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
-            console.log("break");
           }
         }
-
       }
       console.log("newTimeSlots: " + newTimeSlots);
-
       // gå igenom de aktuella datumen.
-
-
     });
-
-
   }
 
   componentDidMount(){
@@ -85,11 +72,12 @@ class Calendar extends React.Component {
 
   generateTimeslotsForOneMonthButtonClicked(){
     var todaysDate = new Date();
-
+    // för att få med hela förra veckan
+    var earlierDate = this.addDaysAndReturnNewDate(todaysDate, -15);
     var tempDate;
     var tempDateAsString;
-    for(var i = 0; i < 31; i++){
-      tempDate = this.addDaysAndReturnNewDate(todaysDate, i);
+    for(var i = 0; i < 65; i++){
+      tempDate = this.addDaysAndReturnNewDate(earlierDate, i);
       tempDateAsString = this.convertDateToDbString(tempDate);
       database.ref('calendar/' + tempDateAsString).set({
         "0900" : {

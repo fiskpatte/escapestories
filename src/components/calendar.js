@@ -10,16 +10,26 @@ class Calendar extends React.Component {
     super(props);
     // jag vill ha en array i state som innehåller alla noder för vald vecka.
     this.state = {timeSlots: {}};
+
+    var todaysDate = new Date();
+    var currentWeekDay = todaysDate.getDay();
+    console.log(currentWeekDay);
+
+    var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
+    // Gör en array där alla datum jag vill komma åt finns.
+    var weekArray = this.getWeekArray(firstDateOfWeek);
+
+
   }
 
   componentDidMount(){
-      var todaysDate = new Date();
-      var currentWeekDay = todaysDate.getDay();
-      console.log(currentWeekDay);
-
-      var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
-      // Gör en array där alla datum jag vill komma åt finns.
-      var weekArray = this.getWeekArray(firstDateOfWeek);
+      // var todaysDate = new Date();
+      // var currentWeekDay = todaysDate.getDay();
+      // console.log(currentWeekDay);
+      //
+      // var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
+      // // Gör en array där alla datum jag vill komma åt finns.
+      // var weekArray = this.getWeekArray(firstDateOfWeek);
 
   }
 
@@ -120,13 +130,13 @@ class Calendar extends React.Component {
           <tbody>
             <tr>
               <td></td>
-              <td>{this.state.}</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              <td>Måndag</td>
+              <td>Tisdag</td>
+              <td>Onsdag</td>
+              <td>Torsdag</td>
+              <td>Fredag</td>
+              <td>Lördag</td>
+              <td>Söndag</td>
             </tr>
             <tr>
               <td>09:00</td>

@@ -1,0 +1,227 @@
+import React from 'react';
+import Timeslot from './timeslot';
+
+var database = firebase.database();
+var myWeekObject;
+
+class Calendar extends React.Component {
+
+  constructor(props){
+    super(props);
+    // jag vill ha en array i state som innehåller alla noder för vald vecka.
+    this.state = {timeSlots: {}};
+  }
+
+  componentDidMount(){
+      var todaysDate = new Date();
+      var currentWeekDay = todaysDate.getDay();
+      console.log(currentWeekDay);
+
+      var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
+      // Gör en array där alla datum jag vill komma åt finns.
+      var weekArray = this.getWeekArray(firstDateOfWeek);
+
+  }
+
+  // Return arrays of dates given a first date
+  getWeekArray(firstDate){
+    var weekArray = [];
+    for(var i = 0; i < 7; i++){
+      weekArray.push(this.addDaysAndReturnNewDate(firstDate, i));
+    }
+    return weekArray;
+  }
+
+  // Adds a number of days to a date and returns the new date.
+  addDaysAndReturnNewDate(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+  generateTimeslotsForOneMonthButtonClicked(){
+    var todaysDate = new Date();
+
+    var tempDate;
+    var tempDateAsString;
+    for(var i = 0; i < 31; i++){
+      tempDate = this.addDaysAndReturnNewDate(todaysDate, i);
+      tempDateAsString = this.convertDateToDbString(tempDate);
+      console.log(tempDateAsString);
+      database.ref('calendar/' + tempDateAsString).set({
+        "0900" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1030" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1200" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1330" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1500" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1630" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1800" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1930" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "2100" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        }
+      });
+    }
+  }
+
+  convertDateToDbString(date){
+    var dateAsValidString = "";
+    dateAsValidString += date.getFullYear().toString().substring(2, 4);
+    var month = date.getMonth();
+    month += 1;
+    dateAsValidString += month;
+    var day = date.getDate();
+    if(day < 10){
+      day = "0" + day;
+    }
+    dateAsValidString += day;
+    return dateAsValidString;
+  }
+
+  render() {
+    return (
+      <div>
+        {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
+        <table>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>{this.state.}</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>09:00</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>10:30</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>12:00</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>13:30</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>15:00</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>16:30</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>18:00</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>19:30</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+            <tr>
+              <td>21:00</td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+              <td><Timeslot /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+export default Calendar;

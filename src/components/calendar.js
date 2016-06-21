@@ -2,6 +2,7 @@ import React from 'react';
 import Timeslot from './timeslot';
 
 var database = firebase.database();
+var calendarRef = database.ref('calendar');
 var myWeekObject;
 
 class Calendar extends React.Component {
@@ -9,15 +10,48 @@ class Calendar extends React.Component {
   constructor(props){
     super(props);
     // jag vill ha en array i state som innehåller alla noder för vald vecka.
-    this.state = {timeSlots: {}};
+    this.state = {timeSlots: []};
 
     var todaysDate = new Date();
     var currentWeekDay = todaysDate.getDay();
-    console.log(currentWeekDay);
 
     var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
     // Gör en array där alla datum jag vill komma åt finns.
     var weekArray = this.getWeekArray(firstDateOfWeek);
+    var self = this;
+
+    calendarRef.on("value", function(snapshot){
+
+      var cal = snapshot.val();
+      var firstDateOfWeekAsString = self.convertDateToDbString(firstDateOfWeek);
+
+      var newTimeSlots = [];
+      for(var index in cal){
+        // Kolla om denna dag ska läggas till
+        console.log("index: " +  index);
+        console.log("weekArray[0]" + self.convertDateToDbString(weekArray[0]));
+        console.log("weekArray[6]" + self.convertDateToDbString(weekArray[6]));
+
+
+
+        if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
+          console.log(index + " går in");
+          newTimeSlots.push({index: cal[index]});
+          console.log("index: " + index);
+
+          if(index == self.convertDateToDbString(weekArray[6])){
+            break;
+            console.log("break");
+          }
+        }
+
+      }
+      console.log("newTimeSlots: " + newTimeSlots);
+
+      // gå igenom de aktuella datumen.
+
+
+    });
 
 
   }
@@ -57,7 +91,6 @@ class Calendar extends React.Component {
     for(var i = 0; i < 31; i++){
       tempDate = this.addDaysAndReturnNewDate(todaysDate, i);
       tempDateAsString = this.convertDateToDbString(tempDate);
-      console.log(tempDateAsString);
       database.ref('calendar/' + tempDateAsString).set({
         "0900" : {
           "manuscript" : "open",
@@ -113,6 +146,9 @@ class Calendar extends React.Component {
     dateAsValidString += date.getFullYear().toString().substring(2, 4);
     var month = date.getMonth();
     month += 1;
+    if(month < 10){
+      month = "0" + month;
+    }
     dateAsValidString += month;
     var day = date.getDate();
     if(day < 10){

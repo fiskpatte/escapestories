@@ -39,7 +39,7 @@ class Calendar extends React.Component {
         }
       }
       // gå igenom de aktuella datumen.
-
+      console.log(newTimeSlots[0].data["0900"].breakin);
       var newState = self.state;
       newState.timeSlots = newTimeSlots;
       self.setState(newState);
@@ -169,7 +169,7 @@ class Calendar extends React.Component {
             </tr>
             <tr>
               <td>09:00</td>
-              <td><Timeslot /></td>
+              <td><Timeslot slot={(this.state.timeSlots[0])["0900"]}/></td>
               <td><Timeslot /></td>
               <td><Timeslot /></td>
               <td><Timeslot /></td>

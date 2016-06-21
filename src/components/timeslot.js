@@ -3,7 +3,7 @@ import React from 'react';
 class Timeslot extends React.Component {
   render() {
     return (
-      <p>TimeSlot</p>
+      <p>{typeof this.props.slot == 'undefined' ? "TimeSlot" : this.props.slot}</p>
     );
   }
 }

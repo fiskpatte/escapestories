@@ -10,13 +10,12 @@ class Calendar extends React.Component {
   constructor(props){
     super(props);
     // jag vill ha en array i state som innehåller alla noder för vald vecka.
-    this.state = {timeSlots: []};
+    this.state = {timeSlots: [{date: ""}, {date: ""}, {date: ""}, {date: ""}, {date: ""}, {date: ""}, {date: ""}]};
 
     var todaysDate = new Date();
     var currentWeekDay = todaysDate.getDay();
 
     var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
-    console.log("first date: " + firstDateOfWeek);
     // Gör en array där alla datum jag vill komma åt finns.
     var weekArray = this.getWeekArray(firstDateOfWeek);
     var self = this;
@@ -29,17 +28,22 @@ class Calendar extends React.Component {
       var newTimeSlots = [];
       for(var index in cal){
         // Kolla om denna dag ska läggas till
-        console.log(index);
         if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
-          console.log(index + " går in");
-          newTimeSlots.push({index: cal[index]});
+          newTimeSlots.push({
+            date: index,
+            data: cal[index]
+          });
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
           }
         }
       }
-      console.log("newTimeSlots: " + newTimeSlots);
       // gå igenom de aktuella datumen.
+
+      var newState = self.state;
+      newState.timeSlots = newTimeSlots;
+      self.setState(newState);
+
     });
   }
 
@@ -70,6 +74,7 @@ class Calendar extends React.Component {
     return result;
   }
 
+  // skapa lite tider i databasen
   generateTimeslotsForOneMonthButtonClicked(){
     var todaysDate = new Date();
     // för att få med hela förra veckan
@@ -154,13 +159,13 @@ class Calendar extends React.Component {
           <tbody>
             <tr>
               <td></td>
-              <td>Måndag</td>
-              <td>Tisdag</td>
-              <td>Onsdag</td>
-              <td>Torsdag</td>
-              <td>Fredag</td>
-              <td>Lördag</td>
-              <td>Söndag</td>
+              <td>{this.state.timeSlots[0].date}</td>
+              <td>{this.state.timeSlots[1].date}</td>
+              <td>{this.state.timeSlots[2].date}</td>
+              <td>{this.state.timeSlots[3].date}</td>
+              <td>{this.state.timeSlots[4].date}</td>
+              <td>{this.state.timeSlots[5].date}</td>
+              <td>{this.state.timeSlots[6].date}</td>
             </tr>
             <tr>
               <td>09:00</td>

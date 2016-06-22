@@ -10,7 +10,16 @@ class Calendar extends React.Component {
   constructor(props){
     super(props);
     // jag vill ha en array i state som innehåller alla noder för vald vecka.
-    this.state = {timeSlots: [{date: ""}, {date: ""}, {date: ""}, {date: ""}, {date: ""}, {date: ""}, {date: ""}]};
+    this.state = {timeSlots: [
+                              {date: "", data: {}},
+                              {date: "", data: {}},
+                              {date: "", data: {}},
+                              {date: "", data: {}},
+                              {date: "", data: {}},
+                              {date: "", data: {}},
+                              {date: "", data: {}}
+                            ]
+                          };
 
     var todaysDate = new Date();
     var currentWeekDay = todaysDate.getDay();
@@ -169,93 +178,57 @@ class Calendar extends React.Component {
             </tr>
             <tr>
               <td>09:00</td>
-              <td><Timeslot slot={(this.state.timeSlots[0])["0900"]}/></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["0900"] == 'undefined' ? "" : <Timeslot slot={day.data["0900"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>10:30</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1030"] == 'undefined' ? "" : <Timeslot slot={day.data["1030"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>12:00</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1200"] == 'undefined' ? "" : <Timeslot slot={day.data["1200"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>13:30</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1330"] == 'undefined' ? "" : <Timeslot slot={day.data["1330"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>15:00</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1500"] == 'undefined' ? "" : <Timeslot slot={day.data["1500"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>16:30</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1630"] == 'undefined' ? "" : <Timeslot slot={day.data["1630"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>18:00</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1800"] == 'undefined' ? "" : <Timeslot slot={day.data["1800"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>19:30</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["1930"] == 'undefined' ? "" : <Timeslot slot={day.data["1930"]} /> }</td>
+              ))}
             </tr>
             <tr>
               <td>21:00</td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
-              <td><Timeslot /></td>
+              {this.state.timeSlots.map((day, index) => (
+                <td key={index}>{day.data["2100"] == 'undefined' ? "" : <Timeslot slot={day.data["2100"]} /> }</td>
+              ))}
             </tr>
           </tbody>
         </table>

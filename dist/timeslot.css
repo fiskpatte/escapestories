@@ -1,0 +1,7 @@
+.timeslot-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    -webkit-border-radius: 12px;
+    padding: 5px 10px;
+}

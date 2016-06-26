@@ -1,0 +1,23 @@
+.calendar-table {
+    background: #ebe1ec;
+}
+
+.calendar-td {
+    border: 1px solid #ccc;
+    color: #444;
+    line-height: 22px;
+    text-align: center;
+}
+
+.calendar-button {
+    background: bisque;
+    border-radius: 12px;
+}
+
+.calendar-button-right {
+    float: right;
+}
+
+.shrink-to-fit {
+    display: inline-block;
+}

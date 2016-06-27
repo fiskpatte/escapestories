@@ -178,11 +178,12 @@ class Calendar extends React.Component {
     return dateAsValidString;
   }
 
-  navigateToNextWeek(){
+
+  navigateToPrevWeek(){
     var self = this;
-    firstDateOfWeek = this.addDaysAndReturnNewDate(firstDateOfWeek, 7);
+    firstDateOfWeek = this.addDaysAndReturnNewDate(firstDateOfWeek, -7);
     var weekArray = this.getWeekArray(firstDateOfWeek);
-    
+
     calendarRef.on("value", function(snapshot){
       var cal = snapshot.val();
       var firstDateOfWeekAsString = self.convertDateToDbString(firstDateOfWeek);
@@ -200,20 +201,71 @@ class Calendar extends React.Component {
           }
         }
       }
+      // Checka att det fanns data för hela veckan
+      if(newTimeSlots.length == 7){
+        slotsRef.on("value", function(snapshot){
+          // för varje nod i newTimeSlots, lägg till data
+          var snap = snapshot.val();
+          //var newTimeSlots = self.state.timeSlots;
+          for(var day in newTimeSlots){
+            newTimeSlots[day].data = snap[newTimeSlots[day].dbId];
+          }
 
-      slotsRef.on("value", function(snapshot){
-        // för varje nod i newTimeSlots, lägg till data
-        var snap = snapshot.val();
-        //var newTimeSlots = self.state.timeSlots;
-        for(var day in newTimeSlots){
-          newTimeSlots[day].data = snap[newTimeSlots[day].dbId];
+          var newState = self.state;
+          newState.timeSlots = newTimeSlots;
+          newState.weeksFirstDate = firstDateOfWeek;
+          self.setState(newState);
+        });
+      } else {
+        console.log("Slut på datum");
+        // korrigera första datum för aktuell vecka
+        firstDateOfWeek = self.addDaysAndReturnNewDate(firstDateOfWeek, 7);
+      }
+    });
+  }
+
+  navigateToNextWeek(){
+    var self = this;
+    firstDateOfWeek = this.addDaysAndReturnNewDate(firstDateOfWeek, 7);
+    var weekArray = this.getWeekArray(firstDateOfWeek);
+
+    calendarRef.on("value", function(snapshot){
+      var cal = snapshot.val();
+      var firstDateOfWeekAsString = self.convertDateToDbString(firstDateOfWeek);
+      var newTimeSlots = [];
+      for(var index in cal){
+        // Kolla om denna dag ska läggas till
+        if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
+          newTimeSlots.push({
+            date: index,
+            dbId: cal[index],
+            data: {}
+          });
+          if(index == self.convertDateToDbString(weekArray[6])){
+            break;
+          }
         }
+      }
+      // Checka att det fanns data för hela veckan
+      if(newTimeSlots.length == 7){
+        slotsRef.on("value", function(snapshot){
+          // för varje nod i newTimeSlots, lägg till data
+          var snap = snapshot.val();
+          //var newTimeSlots = self.state.timeSlots;
+          for(var day in newTimeSlots){
+            newTimeSlots[day].data = snap[newTimeSlots[day].dbId];
+          }
 
-        var newState = self.state;
-        newState.timeSlots = newTimeSlots;
-        newState.weeksFirstDate = firstDateOfWeek;
-        self.setState(newState);
-      });
+          var newState = self.state;
+          newState.timeSlots = newTimeSlots;
+          newState.weeksFirstDate = firstDateOfWeek;
+          self.setState(newState);
+        });
+      } else {
+        console.log("Slut på datum");
+        // korrigera första datum för aktuell vecka
+        firstDateOfWeek = self.addDaysAndReturnNewDate(firstDateOfWeek, -7);
+      }
     });
   }
 
@@ -222,7 +274,7 @@ class Calendar extends React.Component {
       <div className="shrink-to-fit">
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
         <div>
-          <button className="fa fa-arrow-left calendar-button"></button>
+          <button className="fa fa-arrow-left calendar-button" onClick={this.navigateToPrevWeek.bind(this)}></button>
           <button className="fa fa-arrow-right calendar-button calendar-button-right" onClick={this.navigateToNextWeek.bind(this)}></button>
         </div>
         <table className="calendar-table">

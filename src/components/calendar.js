@@ -293,74 +293,75 @@ class Calendar extends React.Component {
     return (
       <div className="shrink-to-fit">
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
-        <div>
+        <div className="flex">
           <button className="fa fa-arrow-left calendar-button" onClick={this.navigateToPrevWeek.bind(this)}></button>
-          <button className="fa fa-arrow-right calendar-button calendar-button-right" onClick={this.navigateToNextWeek.bind(this)}></button>
+          <p>Week 23</p>
+          <button className="fa fa-arrow-right calendar-button" onClick={this.navigateToNextWeek.bind(this)}></button>
         </div>
         <table className="calendar-table">
           <tbody>
-            <tr>
+            <tr className="calendar-first-row">
               <td></td>
-              <td>{this.state.timeSlots[0].date}</td>
-              <td>{this.state.timeSlots[1].date}</td>
-              <td>{this.state.timeSlots[2].date}</td>
-              <td>{this.state.timeSlots[3].date}</td>
-              <td>{this.state.timeSlots[4].date}</td>
-              <td>{this.state.timeSlots[5].date}</td>
-              <td>{this.state.timeSlots[6].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[0].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[1].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[2].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[3].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[4].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[5].date}</td>
+              <td className="calendar-first-row-td">{this.state.timeSlots[6].date}</td>
             </tr>
-            <tr>
-              <td>09:00</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td" >09:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["0900"] } dayId={day.dbId} time="0900" bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["0900"] } dayId={day.dbId} time="0900" bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>10:30</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">10:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1030"]} dayId={day.dbId} time="1030" bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1030"]} dayId={day.dbId} time="1030" bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>12:00</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">12:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1200"]} dayId={day.dbId} time="1200" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1200"]} dayId={day.dbId} time="1200" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>13:30</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">13:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1330"]} dayId={day.dbId} time="1330" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1330"]} dayId={day.dbId} time="1330" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>15:00</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">15:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1500"]} dayId={day.dbId} time="1500" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1500"]} dayId={day.dbId} time="1500" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>16:30</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">16:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1630"]} dayId={day.dbId} time="1630" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1630"]} dayId={day.dbId} time="1630" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>18:00</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">18:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1800"]} dayId={day.dbId} time="1800" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1800"]} dayId={day.dbId} time="1800" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>19:30</td>
+            <tr className="calendar-tr">
+              <td  className="calendar-first-td">19:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1930"]} dayId={day.dbId} time="1930" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["1930"]} dayId={day.dbId} time="1930" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
-            <tr>
-              <td>21:00</td>
+            <tr className="calendar-tr">
+              <td className="calendar-first-td">21:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["2100"]} dayId={day.dbId} time="2100" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
+                <td className="calendar-td" key={index}>{<Timeslot slot={day.data["2100"]} dayId={day.dbId} time="2100" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
           </tbody>

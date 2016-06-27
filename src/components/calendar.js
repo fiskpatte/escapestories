@@ -269,6 +269,26 @@ class Calendar extends React.Component {
     });
   }
 
+  bookRoomButtonCallback(slot, id, time){
+    var slotToUpdate;
+    for(var i in this.state.timeSlots){
+      if(this.state.timeSlots[i].dbId == id){
+        slotToUpdate = this.state.timeSlots[i];
+        break;
+      }
+    }
+    if(slotToUpdate.data[time].breakin == 'open'){
+      slotsRef.child(id).child(time).child('breakin').set("occupied");
+    } else if(slotToUpdate.data[time].manuscript == 'open'){
+      slotsRef.child(id).child(time).child('manuscript').set("occupied");
+    } else if(slotToUpdate.data[time].coverup == 'open'){
+      slotsRef.child(id).child(time).child('coverup').set("occupied");
+    } else {
+      console.error("Error vid bokning. dayId: "+ id + ", time: " + time);
+    }
+
+  }
+
   render() {
     return (
       <div className="shrink-to-fit">
@@ -292,55 +312,55 @@ class Calendar extends React.Component {
             <tr>
               <td>09:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["0900"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["0900"] } dayId={day.dbId} time="0900" bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
               ))}
             </tr>
             <tr>
               <td>10:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1030"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1030"]} dayId={day.dbId} time="1030" bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
               ))}
             </tr>
             <tr>
               <td>12:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1200"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1200"]} dayId={day.dbId} time="1200" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
             <tr>
               <td>13:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1330"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1330"]} dayId={day.dbId} time="1330" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
             <tr>
               <td>15:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1500"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1500"]} dayId={day.dbId} time="1500" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
             <tr>
               <td>16:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1630"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1630"]} dayId={day.dbId} time="1630" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
             <tr>
               <td>18:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1800"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1800"]} dayId={day.dbId} time="1800" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
             <tr>
               <td>19:30</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["1930"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["1930"]} dayId={day.dbId} time="1930" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
             <tr>
               <td>21:00</td>
               {this.state.timeSlots.map((day, index) => (
-                <td key={index}>{<Timeslot slot={day.data["2100"]} /> }</td>
+                <td key={index}>{<Timeslot slot={day.data["2100"]} dayId={day.dbId} time="2100" bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
           </tbody>

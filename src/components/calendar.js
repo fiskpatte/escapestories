@@ -5,6 +5,7 @@ var database = firebase.database();
 var calendarRef = database.ref('calendar');
 var slotsRef = database.ref('days');
 var myWeekObject;
+var firstDateOfWeek = new Date();
 
 class Calendar extends React.Component {
 
@@ -19,7 +20,8 @@ class Calendar extends React.Component {
                     {date: "", data: {}, dbId: ""},
                     {date: "", data: {}, dbId: ""},
                     {date: "", data: {}, dbId: ""}
-                    ]
+                  ]
+
                   };
 
     var todaysDate = new Date();
@@ -29,7 +31,7 @@ class Calendar extends React.Component {
     if(currentWeekDay == 0){
       currentWeekDay = 7;
     }
-    var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
+    firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
     // Gör en array där alla datum jag vill komma åt finns.
     var weekArray = this.getWeekArray(firstDateOfWeek);
     var self = this;
@@ -57,6 +59,7 @@ class Calendar extends React.Component {
 
       var newState = self.state;
       newState.timeSlots = newTimeSlots;
+      newState.weeksFirstDate = firstDateOfWeek;
       self.setState(newState);
 
 
@@ -65,27 +68,17 @@ class Calendar extends React.Component {
   }
 
   componentDidMount(){
-      // var todaysDate = new Date();
-      // var currentWeekDay = todaysDate.getDay();
-      // console.log(currentWeekDay);
-      //
-      // var firstDateOfWeek = this.addDaysAndReturnNewDate(todaysDate, 1 - currentWeekDay);
-      // // Gör en array där alla datum jag vill komma åt finns.
-      // var weekArray = this.getWeekArray(firstDateOfWeek);
       var self = this;
       slotsRef.on("value", function(snapshot){
         // för varje nod i newTimeSlots, lägg till data
         var snap = snapshot.val();
         var newTimeSlots = self.state.timeSlots;
-
         for(var day in self.state.timeSlots){
           newTimeSlots[day].data = snap[newTimeSlots[day].dbId];
-
         }
         var newState = self.state;
         newState.timeSlots = newTimeSlots;
         self.setState(newState);
-        console.log(newTimeSlots);
       });
 
   }
@@ -95,7 +88,6 @@ class Calendar extends React.Component {
     var weekArray = [];
     for(var i = 0; i < 7; i++){
       weekArray.push(this.addDaysAndReturnNewDate(firstDate, i));
-      console.log(i);
     }
     return weekArray;
   }
@@ -109,64 +101,63 @@ class Calendar extends React.Component {
 
   // skapa lite tider i databasen
   generateTimeslotsForOneMonthButtonClicked(){
-    // var todaysDate = new Date();
-    // // för att få med hela förra veckan
-    // var earlierDate = this.addDaysAndReturnNewDate(todaysDate, -15);
-    // var tempDate;
-    // var tempDateAsString;
-    // for(var i = 0; i < 65; i++){
-    //   tempDate = this.addDaysAndReturnNewDate(earlierDate, i);
-    //   tempDateAsString = this.convertDateToDbString(tempDate);
-    //   var dayId = database.ref('days').push({
-    //     "0900" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1030" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1200" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1330" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1500" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1630" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1800" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "1930" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     },
-    //     "2100" : {
-    //       "manuscript" : "open",
-    //       "coverup" : "open",
-    //       "breakin" : "open"
-    //     }
-    //   });
-    //   database.ref('calendar/' + tempDateAsString).set(dayId.key);
-    //   //console.log(dayId.key);
-
+    var todaysDate = new Date();
+    // för att få med hela förra veckan
+    var earlierDate = this.addDaysAndReturnNewDate(todaysDate, -15);
+    var tempDate;
+    var tempDateAsString;
+    for(var i = 0; i < 65; i++){
+      tempDate = this.addDaysAndReturnNewDate(earlierDate, i);
+      tempDateAsString = this.convertDateToDbString(tempDate);
+      var dayId = database.ref('days').push({
+        "0900" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1030" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1200" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1330" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1500" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1630" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1800" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "1930" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        },
+        "2100" : {
+          "manuscript" : "open",
+          "coverup" : "open",
+          "breakin" : "open"
+        }
+      });
+      database.ref('calendar/' + tempDateAsString).set(dayId.key);
+    }
 
   }
 
@@ -187,13 +178,52 @@ class Calendar extends React.Component {
     return dateAsValidString;
   }
 
+  navigateToNextWeek(){
+    var self = this;
+    firstDateOfWeek = this.addDaysAndReturnNewDate(firstDateOfWeek, 7);
+    var weekArray = this.getWeekArray(firstDateOfWeek);
+    
+    calendarRef.on("value", function(snapshot){
+      var cal = snapshot.val();
+      var firstDateOfWeekAsString = self.convertDateToDbString(firstDateOfWeek);
+      var newTimeSlots = [];
+      for(var index in cal){
+        // Kolla om denna dag ska läggas till
+        if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
+          newTimeSlots.push({
+            date: index,
+            dbId: cal[index],
+            data: {}
+          });
+          if(index == self.convertDateToDbString(weekArray[6])){
+            break;
+          }
+        }
+      }
+
+      slotsRef.on("value", function(snapshot){
+        // för varje nod i newTimeSlots, lägg till data
+        var snap = snapshot.val();
+        //var newTimeSlots = self.state.timeSlots;
+        for(var day in newTimeSlots){
+          newTimeSlots[day].data = snap[newTimeSlots[day].dbId];
+        }
+
+        var newState = self.state;
+        newState.timeSlots = newTimeSlots;
+        newState.weeksFirstDate = firstDateOfWeek;
+        self.setState(newState);
+      });
+    });
+  }
+
   render() {
     return (
       <div className="shrink-to-fit">
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
         <div>
           <button className="fa fa-arrow-left calendar-button"></button>
-          <button className="fa fa-arrow-right calendar-button calendar-button-right"></button>
+          <button className="fa fa-arrow-right calendar-button calendar-button-right" onClick={this.navigateToNextWeek.bind(this)}></button>
         </div>
         <table className="calendar-table">
           <tbody>

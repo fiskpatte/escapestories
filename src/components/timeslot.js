@@ -10,7 +10,7 @@ class Timeslot extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="td-div">
       {typeof this.props.slot == 'undefined' ? "" :
         this.props.slot.breakin == "open" ||
           this.props.slot.manuscript == "open" ||

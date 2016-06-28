@@ -40,13 +40,13 @@ class Calendar extends React.Component {
     super(props);
     // jag vill ha en array i state som innehåller alla noder för vald vecka.
     this.state = {timeSlots: [
-                    {date: "", data: {}, dbId: ""},
-                    {date: "", data: {}, dbId: ""},
-                    {date: "", data: {}, dbId: ""},
-                    {date: "", data: {}, dbId: ""},
-                    {date: "", data: {}, dbId: ""},
-                    {date: "", data: {}, dbId: ""},
-                    {date: "", data: {}, dbId: ""}
+                    {date: "", data: {}, dbId: "", readableDate: ""},
+                    {date: "", data: {}, dbId: "", readableDate: ""},
+                    {date: "", data: {}, dbId: "", readableDate: ""},
+                    {date: "", data: {}, dbId: "", readableDate: ""},
+                    {date: "", data: {}, dbId: "", readableDate: ""},
+                    {date: "", data: {}, dbId: "", readableDate: ""},
+                    {date: "", data: {}, dbId: "", readableDate: ""}
                   ]
 
                   };
@@ -76,7 +76,8 @@ class Calendar extends React.Component {
           newTimeSlots.push({
             date: index,
             dbId: cal[index],
-            data: {}
+            data: {},
+            readableDate: self.convertToReadableDay(index)
           });
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
@@ -88,9 +89,6 @@ class Calendar extends React.Component {
       newState.timeSlots = newTimeSlots;
       newState.weeksFirstDate = firstDateOfWeek;
       self.setState(newState);
-
-
-      // gå igenom de aktuella datumen.
     });
   }
 
@@ -221,7 +219,8 @@ class Calendar extends React.Component {
           newTimeSlots.push({
             date: index,
             dbId: cal[index],
-            data: {}
+            data: {},
+            readableDate: self.convertToReadableDay(index)
           });
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
@@ -266,7 +265,8 @@ class Calendar extends React.Component {
           newTimeSlots.push({
             date: index,
             dbId: cal[index],
-            data: {}
+            data: {},
+            readableDate: self.convertToReadableDay(index)
           });
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
@@ -318,6 +318,54 @@ class Calendar extends React.Component {
 
   }
 
+  convertToReadableDay(date){
+    var month;
+    switch(date.substr(2,2)){
+      case "01":
+        month = "januari";
+        break;
+      case "02":
+        month = "februari";
+        break;
+      case "03":
+        month = "mars";
+        break;
+      case "04":
+        month = "april";
+        break;
+      case "05":
+        month = "maj";
+        break;
+      case "06":
+        month = "juni";
+        break;
+      case "07":
+        month = "juli";
+        break;
+      case "08":
+        month = "augusti";
+        break;
+      case "09":
+        month = "september";
+        break;
+      case "10":
+        month = "oktober";
+        break;
+      case "11":
+        month = "november";
+        break;
+      case "12":
+        month = "december";
+        break;
+    }
+    var day = date.substr(4,2);
+    if(day[0] == '0'){
+      day = day.substr(1,1);
+    }
+    return day + " " + month;
+
+  }
+
   render() {
     return (
       <div className="shrink-to-fit">
@@ -332,13 +380,13 @@ class Calendar extends React.Component {
           <tbody>
             <tr className="calendar-first-row">
               <td></td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[0].date}</td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[1].date}</td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[2].date}</td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[3].date}</td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[4].date}</td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[5].date}</td>
-              <td className="calendar-first-row-td">{this.state.timeSlots[6].date}</td>
+              <td className="calendar-first-row-td">Måndag <span><br></br></span>{this.state.timeSlots[0].readableDate}</td>
+              <td className="calendar-first-row-td">Tisdag <span><br></br></span>{this.state.timeSlots[1].readableDate}</td>
+              <td className="calendar-first-row-td">Onsdag <span><br></br></span>{this.state.timeSlots[2].readableDate}</td>
+              <td className="calendar-first-row-td">Torsdag<span><br></br></span>{this.state.timeSlots[3].readableDate}</td>
+              <td className="calendar-first-row-td">Fredag <span><br></br></span>{this.state.timeSlots[4].readableDate}</td>
+              <td className="calendar-first-row-td">Lördag <span><br></br></span>{this.state.timeSlots[5].readableDate}</td>
+              <td className="calendar-first-row-td">Söndag <span><br></br></span>{this.state.timeSlots[6].readableDate}</td>
             </tr>
             <tr className="calendar-tr">
               <td className="calendar-first-td" >09:00</td>

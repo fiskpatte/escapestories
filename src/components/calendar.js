@@ -6,6 +6,33 @@ var calendarRef = database.ref('calendar');
 var slotsRef = database.ref('days');
 var myWeekObject;
 var firstDateOfWeek = new Date();
+var currentWeek;
+
+Date.prototype.getWeek = function() {
+  var weekday = (6+this.getDay())%7;
+  // Hämta veckodag för 1 januari
+  var jan1 = new Date(this.getFullYear(),0,1);
+  var jan1day = (6+jan1.getDay())%7;
+  // Hämta måndag i vecka 1
+  if (jan1day <= 3){
+    var firstmonday = new Date(this.getFullYear(), 0, 1-jan1day);
+  }
+  else{
+    var firstmonday = new Date(this.getFullYear(), 0, 8-jan1day);
+  }
+  // Hämta måndag i aktuell vecka
+  var thismonday = new Date(this);
+  thismonday.setDate(this.getDate()-weekday);
+  // Kolla om det är slutet av december och vecka 1
+  if (thismonday.getDate() > 28 && thismonday.getMonth() == 11){
+    return 1;
+  }
+  var week = Math.floor( ( thismonday - firstmonday ) / 86400000 / 7 ) + 1;
+  if (week == 0){
+    week = new Date(this.getFullYear()-1,11,31).getWeek();
+  }
+  return week;
+}
 
 class Calendar extends React.Component {
 
@@ -270,6 +297,8 @@ class Calendar extends React.Component {
   }
 
   bookRoomButtonCallback(slot, id, time){
+    // Denna länk ska vi använda för att skapa bokingsinterfacet:
+    // http://stackoverflow.com/questions/4396790/html-css-pop-up-window-and-disabled-background
     var slotToUpdate;
     for(var i in this.state.timeSlots){
       if(this.state.timeSlots[i].dbId == id){
@@ -295,7 +324,8 @@ class Calendar extends React.Component {
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
         <div className="flex">
           <button className="fa fa-arrow-left calendar-button" onClick={this.navigateToPrevWeek.bind(this)}></button>
-          <p>Week 23</p>
+          <p>Vecka {firstDateOfWeek.getWeek()}</p>
+
           <button className="fa fa-arrow-right calendar-button" onClick={this.navigateToNextWeek.bind(this)}></button>
         </div>
         <table className="calendar-table">

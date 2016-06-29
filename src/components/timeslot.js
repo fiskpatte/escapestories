@@ -16,7 +16,7 @@ class Timeslot extends React.Component {
           this.props.slot.manuscript == "open" ||
           this.props.slot.coverup == "open"
           ? <button className="timeslot-button" onClick={this.callParent.bind(this)}>Boka</button>
-        : <div className="full-slot-div"></div>
+        : <div className="full-slot-div">X</div>
          }
       </div>
     );

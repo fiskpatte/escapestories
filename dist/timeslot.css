@@ -1,20 +1,19 @@
 .timeslot-button {
-
     border: none;
     background-color: #3aaa67;
     color: #FFFFFF;
     font-size: 1.1em;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    /*-webkit-border-radius: 12px;*/
     padding: 5px 10px;
     width: 100%;
     height: 100%;
     overflow: auto;
+    cursor: pointer;
+    outline: none;
 }
 
 .timeslot-button:hover {
   background-color: #B4EEB4;
-
 }
 
 .td-div {

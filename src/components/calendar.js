@@ -444,7 +444,7 @@ class Calendar extends React.Component {
 
           <button className="fa fa-arrow-right calendar-button" onClick={this.navigateToNextWeek.bind(this)}></button>
         </div>
-        <table className="calendar-table">
+        <table className="calendar-table hoverTable">
           <tbody>
             <tr className="calendar-first-row">
               <td></td>

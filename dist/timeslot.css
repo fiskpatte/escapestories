@@ -1,7 +1,7 @@
 .timeslot-button {
 
     border: none;
-    background-color: #00FF66;
+    background-color: #3aaa67;
     color: #FFFFFF;
     font-size: 1.1em;
     font-family: "Comic Sans MS", cursive, sans-serif;
@@ -28,7 +28,6 @@
   height: 100%;
   overflow: auto;
   background-color: #FF6666;
-  color: #FFFFFF;
   font-size: 1.1em;
   font-family: "Comic Sans MS", cursive, sans-serif;
 }

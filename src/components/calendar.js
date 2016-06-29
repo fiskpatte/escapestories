@@ -7,6 +7,7 @@ var slotsRef = database.ref('days');
 var myWeekObject;
 var firstDateOfWeek = new Date();
 var currentWeek;
+var todaysDateAsString;
 
 Date.prototype.getWeek = function() {
   var weekday = (6+this.getDay())%7;
@@ -52,6 +53,7 @@ class Calendar extends React.Component {
                   };
 
     var todaysDate = new Date();
+    todaysDateAsString = this.convertDateToDbString(todaysDate);
     var currentWeekDay = todaysDate.getDay();
 
     // temporärt hack
@@ -70,9 +72,13 @@ class Calendar extends React.Component {
 
 
       var newTimeSlots = [];
+      var i = 0;
       for(var index in cal){
         // Kolla om denna dag ska läggas till
         if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
+          if(index == todaysDateAsString){
+            self.setActiveClass(i);
+          }
           newTimeSlots.push({
             date: index,
             dbId: cal[index],
@@ -82,6 +88,7 @@ class Calendar extends React.Component {
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
           }
+          i++;
         }
       }
 
@@ -122,6 +129,43 @@ class Calendar extends React.Component {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
+  }
+
+  setActiveClass(i){
+    switch(i){
+      case 0:
+        $("#td-mon").addClass("active");
+        break;
+      case 1:
+        $("#td-tue").addClass("active");
+        break;
+      case 2:
+        $("#td-wed").addClass("active");
+        break;
+      case 3:
+        $("#td-thu").addClass("active");
+        break;
+      case 4:
+        $("#td-fri").addClass("active");
+        break;
+      case 5:
+        $("#td-sat").addClass("active");
+        break;
+      case 6:
+        $("#td-sun").addClass("active");
+        break;
+
+    }
+  }
+
+  removeActiveClass(){
+    $("#td-mon").removeClass("active");
+    $("#td-tue").removeClass("active");
+    $("#td-wed").removeClass("active");
+    $("#td-thu").removeClass("active");
+    $("#td-fri").removeClass("active");
+    $("#td-sat").removeClass("active");
+    $("#td-sun").removeClass("active");
   }
 
   // skapa lite tider i databasen
@@ -208,14 +252,22 @@ class Calendar extends React.Component {
     var self = this;
     firstDateOfWeek = this.addDaysAndReturnNewDate(firstDateOfWeek, -7);
     var weekArray = this.getWeekArray(firstDateOfWeek);
+    var todaysDate = new Date();
+    todaysDateAsString = this.convertDateToDbString(todaysDate);
 
     calendarRef.on("value", function(snapshot){
       var cal = snapshot.val();
       var firstDateOfWeekAsString = self.convertDateToDbString(firstDateOfWeek);
       var newTimeSlots = [];
+      var otherWeek = true;
+      var i = 0;
       for(var index in cal){
         // Kolla om denna dag ska läggas till
         if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
+          if(index == todaysDateAsString){
+            self.setActiveClass(i);
+            otherWeek = false;
+          }
           newTimeSlots.push({
             date: index,
             dbId: cal[index],
@@ -225,7 +277,11 @@ class Calendar extends React.Component {
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
           }
+          i++;
         }
+      }
+      if(otherWeek == true){
+        self.removeActiveClass();
       }
       // Checka att det fanns data för hela veckan
       if(newTimeSlots.length == 7){
@@ -254,14 +310,22 @@ class Calendar extends React.Component {
     var self = this;
     firstDateOfWeek = this.addDaysAndReturnNewDate(firstDateOfWeek, 7);
     var weekArray = this.getWeekArray(firstDateOfWeek);
+    var todaysDate = new Date();
+    todaysDateAsString = this.convertDateToDbString(todaysDate);
 
     calendarRef.on("value", function(snapshot){
       var cal = snapshot.val();
       var firstDateOfWeekAsString = self.convertDateToDbString(firstDateOfWeek);
       var newTimeSlots = [];
+      var otherWeek = true;
+      var i = 0;
       for(var index in cal){
         // Kolla om denna dag ska läggas till
         if(index >= self.convertDateToDbString(weekArray[0]) && index <= self.convertDateToDbString(weekArray[6])){
+          if(index == todaysDateAsString){
+            self.setActiveClass(i);
+            otherWeek = false;
+          }
           newTimeSlots.push({
             date: index,
             dbId: cal[index],
@@ -271,7 +335,11 @@ class Calendar extends React.Component {
           if(index == self.convertDateToDbString(weekArray[6])){
             break;
           }
+          i++;
         }
+      }
+      if(otherWeek == true){
+        self.removeActiveClass();
       }
       // Checka att det fanns data för hela veckan
       if(newTimeSlots.length == 7){
@@ -380,13 +448,13 @@ class Calendar extends React.Component {
           <tbody>
             <tr className="calendar-first-row">
               <td></td>
-              <td className="calendar-first-row-td">Måndag <span><br></br></span>{this.state.timeSlots[0].readableDate}</td>
-              <td className="calendar-first-row-td">Tisdag <span><br></br></span>{this.state.timeSlots[1].readableDate}</td>
-              <td className="calendar-first-row-td">Onsdag <span><br></br></span>{this.state.timeSlots[2].readableDate}</td>
-              <td className="calendar-first-row-td">Torsdag<span><br></br></span>{this.state.timeSlots[3].readableDate}</td>
-              <td className="calendar-first-row-td">Fredag <span><br></br></span>{this.state.timeSlots[4].readableDate}</td>
-              <td className="calendar-first-row-td">Lördag <span><br></br></span>{this.state.timeSlots[5].readableDate}</td>
-              <td className="calendar-first-row-td">Söndag <span><br></br></span>{this.state.timeSlots[6].readableDate}</td>
+              <td id="td-mon" className="calendar-first-row-td">Måndag <span><br></br></span>{this.state.timeSlots[0].readableDate}</td>
+              <td id="td-tue" className="calendar-first-row-td">Tisdag <span><br></br></span>{this.state.timeSlots[1].readableDate}</td>
+              <td id="td-wed" className="calendar-first-row-td">Onsdag <span><br></br></span>{this.state.timeSlots[2].readableDate}</td>
+              <td id="td-thu" className="calendar-first-row-td">Torsdag<span><br></br></span>{this.state.timeSlots[3].readableDate}</td>
+              <td id="td-fri" className="calendar-first-row-td">Fredag <span><br></br></span>{this.state.timeSlots[4].readableDate}</td>
+              <td id="td-sat" className="calendar-first-row-td">Lördag <span><br></br></span>{this.state.timeSlots[5].readableDate}</td>
+              <td id="td-sun" className="calendar-first-row-td">Söndag <span><br></br></span>{this.state.timeSlots[6].readableDate}</td>
             </tr>
             <tr className="calendar-tr">
               <td className="calendar-first-td" >09:00</td>

@@ -436,7 +436,7 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="shrink-to-fit">
+      <div className="shrink-to-fit table-container">
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
         <div className="flex">
           <button className="fa fa-arrow-left calendar-button" onClick={this.navigateToPrevWeek.bind(this)}></button>

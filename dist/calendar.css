@@ -1,10 +1,10 @@
 .calendar-table {
-    border: 5px solid;
-    border-color: rgba(70, 97, 251, 0.37);;
     table-layout: auto;
     width: 600px;
-    border-radius: 30px;
-    border-bottom-right-radius: 10px;
+    table-layout: auto;
+    width: 600px;
+    background-color: #f9fdfd;
+    border-top: 1px solid rgba(29, 22, 12, 0.37);
 }
 
 .calendar-first-row {
@@ -59,15 +59,26 @@
      display: inline-block;
  }
 
+.table-container {
+    border: 2px solid;
+    border-color: rgba(29, 22, 12, 0.37);
+    table-layout: auto;
+    width: 600px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
 .flex {
     display: inline-flex;
     position: relative;
-    left: 30%
+    left: 26%;
+    margin-top: 5px;
 }
 
 .week-number-p{
   font-size: 1.5em;
   margin-top:8px;
+  font-weight: bold;
 }
 
 .active {

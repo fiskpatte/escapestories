@@ -66,18 +66,18 @@
     width: 600px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
+    background-color: #d7d7d8;
 }
 
 .flex {
     display: inline-flex;
     position: relative;
     left: 26%;
-    margin-top: 5px;
+    align-items: center;
 }
 
 .week-number-p{
   font-size: 1.5em;
-  margin-top:8px;
   font-weight: bold;
 }
 

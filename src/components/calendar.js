@@ -372,7 +372,7 @@ class Calendar extends React.Component {
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
         <div className="flex">
           <button className="fa fa-arrow-left calendar-button" onClick={this.navigateToPrevWeek.bind(this)}></button>
-          <p>Vecka {firstDateOfWeek.getWeek()}</p>
+          <p className="week-number-p">Vecka {firstDateOfWeek.getWeek()}</p>
 
           <button className="fa fa-arrow-right calendar-button" onClick={this.navigateToNextWeek.bind(this)}></button>
         </div>

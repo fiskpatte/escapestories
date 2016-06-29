@@ -1,7 +1,34 @@
 .timeslot-button {
-    background-color: #4CAF50;
+
     border: none;
-    color: white;
-    -webkit-border-radius: 12px;
+    background-color: #00FF66;
+    color: #FFFFFF;
+    font-size: 1.1em;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    /*-webkit-border-radius: 12px;*/
     padding: 5px 10px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.timeslot-button:hover {
+  background-color: #B4EEB4;
+
+}
+
+.td-div {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.full-slot-div{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #FF6666;
+  color: #FFFFFF;
+  font-size: 1.1em;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }

@@ -4,6 +4,7 @@
     table-layout: auto;
     width: 600px;
     border-radius: 30px;
+    border-bottom-right-radius: 10px;
 }
 
 .calendar-first-row {
@@ -62,4 +63,9 @@
     display: inline-flex;
     position: relative;
     left: 30%
+}
+
+.week-number-p{
+  font-size: 1.5em;
+  margin-top:8px;
 }

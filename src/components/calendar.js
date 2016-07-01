@@ -390,40 +390,40 @@ class Calendar extends React.Component {
     var month;
     switch(date.substr(2,2)){
       case "01":
-        month = "januari";
+        month = "jan";
         break;
       case "02":
-        month = "februari";
+        month = "feb";
         break;
       case "03":
-        month = "mars";
+        month = "mar";
         break;
       case "04":
-        month = "april";
+        month = "apr";
         break;
       case "05":
         month = "maj";
         break;
       case "06":
-        month = "juni";
+        month = "jun";
         break;
       case "07":
-        month = "juli";
+        month = "jul";
         break;
       case "08":
-        month = "augusti";
+        month = "aug";
         break;
       case "09":
-        month = "september";
+        month = "sep";
         break;
       case "10":
-        month = "oktober";
+        month = "okt";
         break;
       case "11":
-        month = "november";
+        month = "nov";
         break;
       case "12":
-        month = "december";
+        month = "dec";
         break;
     }
     var day = date.substr(4,2);

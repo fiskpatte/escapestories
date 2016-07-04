@@ -5,9 +5,9 @@
     border-top: 1px solid rgba(29, 22, 12, 0.37);
 }
 
-.hoverTable tr:hover td:first-child {
+/*.hoverTable tr:hover td:first-child {
     background-color: #eddc83;
-}
+}*/
 
 .calendar-first-row {
     line-height: 30px;
@@ -57,6 +57,10 @@
     outline: none;
 }
 
+.calendar-button:hover {
+
+}
+
 .shrink-to-fit {
      display: inline-block;
  }
@@ -68,7 +72,7 @@
     width: 600px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
-    background-color: #d7d7d8;
+    background-color: #333;
     margin-top: 49px;
     margin-left: 153px;
     position: absolute;
@@ -84,8 +88,9 @@
 .week-number-p{
   font-size: 1.5em;
   font-weight: bold;
+  color: white;
 }
-
+/*
 .active {
   background-color: #eddc83;
-}
+}*/

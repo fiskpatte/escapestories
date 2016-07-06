@@ -27,12 +27,14 @@ class Timeslot extends React.Component {
   }
 
   mouseEnter(){
+    // console.log("mouseEnter, time: " + this.props.time);
     var newState = this.state;
     newState.buttonText = "Boka!";
     this.setState(newState);
   }
 
   mouseLeave(){
+    // console.log("mouseLeave, time: " + this.props.time);
     var newState = this.state;
     var t = this.props.time;
     t = this.addDots(t);
@@ -44,9 +46,9 @@ class Timeslot extends React.Component {
     return (
       <div className="td-div">
       {typeof this.props.slot == 'undefined' ? "" :
-        this.props.slot.breakin == "open" ||
-          this.props.slot.manuscript == "open" ||
-          this.props.slot.coverup == "open"
+          (this.props.slot.breakin == "open" && this.props.showbreakin == true) ||
+          (this.props.slot.manuscript == "open" && this.props.showmanuscript == true) ||
+          (this.props.slot.coverup == "open" && this.props.showcoverup == true)
           ? <button className="timeslot-button"
                     onClick={this.callParent.bind(this)}
                     onMouseEnter={this.mouseEnter.bind(this)}

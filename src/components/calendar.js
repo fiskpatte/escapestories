@@ -1,5 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Timeslot from './timeslot';
+import Form from './form';
 
 var database = firebase.database();
 var calendarRef = database.ref('calendar');
@@ -333,6 +335,7 @@ class Calendar extends React.Component {
   bookRoomButtonCallback(slot, id, time){
     // Denna länk ska vi använda för att skapa bokingsinterfacet:
     // http://stackoverflow.com/questions/4396790/html-css-pop-up-window-and-disabled-background
+
     var slotToUpdate;
     for(var i in this.state.timeSlots){
       if(this.state.timeSlots[i].dbId == id){
@@ -340,16 +343,30 @@ class Calendar extends React.Component {
         break;
       }
     }
+
+    var availableRooms = [];
     if(slotToUpdate.data[time].breakin == 'open'){
-      slotsRef.child(id).child(time).child('breakin').set("occupied");
-    } else if(slotToUpdate.data[time].manuscript == 'open'){
-      slotsRef.child(id).child(time).child('manuscript').set("occupied");
-    } else if(slotToUpdate.data[time].coverup == 'open'){
-      slotsRef.child(id).child(time).child('coverup').set("occupied");
-    } else {
-      console.error("Error vid bokning. dayId: "+ id + ", time: " + time);
+      availableRooms.push('breakin');
+      //slotsRef.child(id).child(time).child('breakin').set("occupied");
+    }
+    if(slotToUpdate.data[time].manuscript == 'open'){
+      availableRooms.push('manuscript');
+      //slotsRef.child(id).child(time).child('manuscript').set("occupied");
+    }
+    if(slotToUpdate.data[time].coverup == 'open'){
+      availableRooms.push('coverup');
+      //slotsRef.child(id).child(time).child('coverup').set("occupied");
     }
 
+    if(availableRooms.length > 0) {
+      ReactDOM.render(
+          <Form availableRooms={availableRooms}/>,
+          document.getElementById('form')
+      );
+    }
+    else {
+      console.error("Error vid bokning. dayId: "+ id + ", time: " + time);
+    }
   }
 
   convertToReadableDay(date){

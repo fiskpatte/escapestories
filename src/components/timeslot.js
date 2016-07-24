@@ -2,8 +2,6 @@ import React from 'react';
 
 class Timeslot extends React.Component {
 
-
-
   constructor(props){
     super(props);
     var t = this.props.time;

@@ -16,8 +16,7 @@ class Form extends React.Component {
                         })
                     }
                 </select>
-                <br>
-                    
+                <br/>
                 <input type="text" id="name"></input>
             </form>
     );

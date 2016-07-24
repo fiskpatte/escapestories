@@ -11,11 +11,12 @@
     cursor: pointer;
     outline: none;
     width: 80px;
+    border-radius: 5px;
 }
 
 .timeslot-button:hover {
   background-color: #243977;
-
+  font-size: 1.4em;
 }
 
 /*243977

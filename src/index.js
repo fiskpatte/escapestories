@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Calendar from './components/Calendar';
+import Menu from './components/menu';
+import Calendar from './components/calendar';
 
 ReactDOM.render(
-    <Calendar />,
+    <div>
+        <Menu/>
+        <Calendar/>
+    </div>,
     document.getElementById('app')
 );

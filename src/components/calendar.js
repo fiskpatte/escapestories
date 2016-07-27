@@ -1,4 +1,5 @@
 import React from 'react';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ReactDOM from 'react-dom';
 import Timeslot from './timeslot';
 import Form from './form';
@@ -339,11 +340,11 @@ class Calendar extends React.Component {
     var slotToUpdate;
     for(var i in this.state.timeSlots){
       if(this.state.timeSlots[i].dbId == id){
+        console.log(id);
         slotToUpdate = this.state.timeSlots[i];
         break;
       }
     }
-
     var availableRooms = [];
     if(slotToUpdate.data[time].breakin == 'open'){
       availableRooms.push('breakin');
@@ -359,10 +360,7 @@ class Calendar extends React.Component {
     }
 
     if(availableRooms.length > 0) {
-      ReactDOM.render(
-          <Form availableRooms={availableRooms}/>,
-          document.getElementById('form')
-      );
+      browserHistory.push("/avsluta/" + id + "/" + time);
     }
     else {
       console.error("Error vid bokning. dayId: "+ id + ", time: " + time);

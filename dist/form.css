@@ -1,0 +1,26 @@
+fieldset {
+  overflow: hidden
+}
+
+#contact-info {
+  width: 400px;
+}
+
+.same-line {
+  float: left;
+  clear: none;
+}
+
+label {
+  float: left;
+  clear: none;
+  display: block;
+  padding: 2px 1em 0 0;
+}
+
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+}

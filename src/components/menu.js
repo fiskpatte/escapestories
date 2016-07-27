@@ -1,8 +1,19 @@
 import React from 'react';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 class Menu extends React.Component {
-    render() {
-        return (
+
+  navigateToBooking(){
+    browserHistory.push("/boka");
+  }
+
+  navigateToHome(){
+    browserHistory.push("/");
+  }
+
+  render() {
+      return (
+        <div>
             <nav className="navbar navbar-default nav-background">
                 <div className="container-fluid">
                     <div className="navbar-header">
@@ -18,16 +29,18 @@ class Menu extends React.Component {
                     </div>
                     <div id="nct" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
-                            <li><a data-toggle="tab" className="nav-link" href="#">Hem</a></li>
-                            <li className="active"><a data-toggle="tab" className="nav-link" href="#">Bokning</a></li>
+                            <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hem</a></li>
+                            <li className="active" onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Bokning</a></li>
                             <li><a data-toggle="tab" className="nav-link" href="#">Hur spelar man?</a></li>
                             <li><a data-toggle="tab" className="nav-link" href="#">Om oss</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
-        );
-    }
+            {this.props.children}
+        </div>
+      );
+  }
 }
 
 export default Menu;

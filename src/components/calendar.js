@@ -120,6 +120,15 @@ class Calendar extends React.Component {
 
   }
 
+  componentWillUnmount(){
+    slotsRef.off();
+    slotsRef.off();
+    slotsRef.off();
+    calendarRef.off();
+    calendarRef.off();
+    calendarRef.off();
+  }
+
   // Return arrays of dates given a first date
   getWeekArray(firstDate){
     var weekArray = [];
@@ -348,15 +357,12 @@ class Calendar extends React.Component {
     var availableRooms = [];
     if(slotToUpdate.data[time].breakin == 'open'){
       availableRooms.push('breakin');
-      //slotsRef.child(id).child(time).child('breakin').set("occupied");
     }
     if(slotToUpdate.data[time].manuscript == 'open'){
       availableRooms.push('manuscript');
-      //slotsRef.child(id).child(time).child('manuscript').set("occupied");
     }
     if(slotToUpdate.data[time].coverup == 'open'){
       availableRooms.push('coverup');
-      //slotsRef.child(id).child(time).child('coverup').set("occupied");
     }
 
     if(availableRooms.length > 0) {

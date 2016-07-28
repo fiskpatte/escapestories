@@ -3,12 +3,22 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 class Menu extends React.Component {
 
+
+
+  navigateToHome(){
+    browserHistory.push("/");
+  }
+
   navigateToBooking(){
     browserHistory.push("/boka");
   }
 
-  navigateToHome(){
-    browserHistory.push("/");
+  navigateToHowToPlay(){
+    browserHistory.push("/howtoplay");
+  }
+
+  navigateToAbout(){
+    browserHistory.push("/about");
   }
 
   render() {
@@ -30,9 +40,9 @@ class Menu extends React.Component {
                     <div id="nct" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hem</a></li>
-                            <li className="active" onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Bokning</a></li>
-                            <li><a data-toggle="tab" className="nav-link" href="#">Hur spelar man?</a></li>
-                            <li><a data-toggle="tab" className="nav-link" href="#">Om oss</a></li>
+                            <li onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Bokning</a></li>
+                            <li onClick={this.navigateToHowToPlay.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hur spelar man?</a></li>
+                            <li onClick={this.navigateToAbout.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Om oss</a></li>
                         </ul>
                     </div>
                 </div>

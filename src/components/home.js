@@ -4,7 +4,7 @@ class About extends React.Component {
     render() {
         return (
           <div>
-              <p>Här ska det stå info om escapestories</p>
+              <p>Välkommen! Bla bla bla.</p>
           </div>
         );
     }

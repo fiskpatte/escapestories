@@ -9,3 +9,34 @@
 .image-cursor {
     cursor: pointer;
 }
+
+.glyphs {
+    font-size: 1.7em !important;
+}
+
+.rounded-border a {
+    border-radius: 25px;
+}
+
+.list-text:not(.glyphs) {
+    font-size: medium;
+    font-family: cursive;
+}
+
+a:active, a:hover {
+    border: 1px solid #f5c65e !important;
+}
+
+.list-margin {
+    margin-top: 4px !important;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    background-color: #cb9f3c !important;
+    color: #FFFFFF !important;
+}
+
+.navbar-layout {
+    border-bottom: 1px solid #f5c65e;
+    background-color: #ffffff;
+}

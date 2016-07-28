@@ -24,8 +24,8 @@ class Menu extends React.Component {
   render() {
       return (
         <div>
-            <nav className="navbar navbar-default nav-background">
-                <div className="container-fluid">
+            <nav className="navbar navbar-default navbar-fixed-top nav-background">
+                <div className="container-fluid navbar-layout">
                     <div className="navbar-header">
                         <img onClick={this.navigateToHome.bind(this)} 
                              src="logo.png" 
@@ -39,10 +39,10 @@ class Menu extends React.Component {
                             <span className="icon-bar"></span>
                         </button>
                     </div>
-                    <div id="nct" className="collapse navbar-collapse">
-                        <ul className="nav navbar-nav">
-                            <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hem</a></li>
-                            <li onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Bokning</a></li>
+                    <div id="nct" className="collapse navbar-collapse pull-right">
+                        <ul className="nav navbar-nav rounded-border list-margin list-text">
+                            <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link glyphs glyphicon glyphicon-home" href="#"></a></li>
+                            <li onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link glyphs glyphicon glyphicon-calendar" href="#"></a></li>
                             <li onClick={this.navigateToHowToPlay.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hur spelar man?</a></li>
                             <li onClick={this.navigateToAbout.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Om oss</a></li>
                         </ul>

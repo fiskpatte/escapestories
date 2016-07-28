@@ -27,7 +27,9 @@ class Menu extends React.Component {
             <nav className="navbar navbar-default nav-background">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <img src="logo.png" className="brand-logo navbar-brand"></img>
+                        <img onClick={this.navigateToHome.bind(this)} 
+                             src="logo.png" 
+                             className="brand-logo navbar-brand image-cursor"></img>
                         <button type="button"
                                 className="navbar-toggle"
                                 data-target="#nct"

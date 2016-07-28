@@ -5,3 +5,7 @@
 .nav-background {
     background-color: white;
 }
+
+.image-cursor {
+    cursor: pointer;
+}

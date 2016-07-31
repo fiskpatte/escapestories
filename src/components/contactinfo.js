@@ -8,7 +8,7 @@ class Contactinfo extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="content">
               <p>Ring oss fan inte! rinka </p>
             </div>
           );

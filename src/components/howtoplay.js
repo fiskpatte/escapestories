@@ -3,7 +3,7 @@ import React from 'react';
 class HowToPlay extends React.Component {
     render() {
         return (
-          <div>
+          <div className="content">
               <p>Lös problemet.</p>
           </div>
         );

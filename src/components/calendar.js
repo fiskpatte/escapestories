@@ -445,7 +445,7 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="shrink-to-fit table-container">
+      <div className="shrink-to-fit table-container content">
         <div>
           <img id="manuscriptImg" className="round shiny" src="manuscript.png" onClick={this.toggleRoom.bind(this, "manuscript")}/>
           <img id="coverupImg"    className="round shiny" src="coverup.png" onClick={this.toggleRoom.bind(this, "coverup")}/>

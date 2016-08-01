@@ -1,0 +1,24 @@
+.image-row {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.employee-info {
+    text-align: center;
+}
+
+.employee-info h4,p {
+    font-weight: bold;
+}
+
+.employee-image {
+    width: 100%
+}
+
+.contactinfo-description {
+    text-align: center;
+}
+
+.contactinfo-description h1{
+    font-weight: bold;
+}

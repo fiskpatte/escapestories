@@ -3,8 +3,12 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 class Menu extends React.Component {
   logoClick() {
-      $('.list-text li.active').removeClass('active');
-      browserHistory.push("/");
+    $('.list-text li.active').removeClass('active');
+    browserHistory.push("/");
+  }
+
+  toggleClick() {
+    $('.list-text li.active').removeClass('active');
   }
 
   navigateToHome(){
@@ -24,15 +28,22 @@ class Menu extends React.Component {
   }
 
   render() {
+      $('html').bind('click', function(e) {
+          if($(e.target).closest('#menu').length == 0) {
+            $(".collapse").collapse("hide");
+          }
+      });
+
       return (
         <div>
-            <nav className="navbar navbar-default navbar-fixed-top nav-background">
+            <nav id="menu" className="navbar navbar-default navbar-fixed-top nav-background">
                 <div className="container-fluid navbar-layout">
                     <div className="navbar-header">
                         <img onClick={this.logoClick.bind(this)}
                              src="logo.png" 
                              className="brand-logo navbar-brand image-cursor"></img>
                         <button type="button"
+                                onClick={this.toggleClick.bind(this)}
                                 className="navbar-toggle"
                                 data-target="#nct"
                                 data-toggle="collapse">

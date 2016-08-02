@@ -2,8 +2,10 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 class Menu extends React.Component {
-
-
+  logoClick() {
+      $('.list-text li.active').removeClass('active');
+      browserHistory.push("/");
+  }
 
   navigateToHome(){
     browserHistory.push("/");
@@ -27,7 +29,7 @@ class Menu extends React.Component {
             <nav className="navbar navbar-default navbar-fixed-top nav-background">
                 <div className="container-fluid navbar-layout">
                     <div className="navbar-header">
-                        <img onClick={this.navigateToHome.bind(this)} 
+                        <img onClick={this.logoClick.bind(this)}
                              src="logo.png" 
                              className="brand-logo navbar-brand image-cursor"></img>
                         <button type="button"

@@ -1,0 +1,23 @@
+.round {
+  border-radius: 50%;
+}
+
+.black-and-white {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.shiny {
+  -moz-box-shadow: 0 0 10px #fff;
+  -webkit-box-shadow: 0 0 10px #fff;
+  box-shadow: 0px 0px 10px #fff;
+}
+
+.center-in-div{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.fit-childs {
+  display: inline-block;
+}

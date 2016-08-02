@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RoomChoise from './roomchoise';
+
 var database = firebase.database();
 var slotRef;
 var bookingsRef = database.ref('bookings');
@@ -26,6 +28,7 @@ class Form extends React.Component {
         for(var room in data){
           if(data[room] == "open"){
             openSlots.push(room);
+            console.log(room);
           }
         }
 
@@ -64,7 +67,8 @@ class Form extends React.Component {
         <div className="content">
           <form id="bookForm">
             {this.state.availableRooms.map((room, index) => (
-              <span key={index}><input type="radio" name="room" value={room} /> {room} </span>
+              <div key={index}><RoomChoise room={room} /></div>
+              /*<span key={index}><input type="radio" name="room" value={room} /> {room} </span>*/
             ))}
             <br></br>
             <input id="nameinput" className="form-control rounded-edges" type="text" placeholder="Namn" />
@@ -75,7 +79,7 @@ class Form extends React.Component {
             <br></br>
             <input id="couponinput" className="form-control rounded-edges" type="text" placeholder="Rabattkod (Valfri)" />
             <br></br>
-            <select name="numberOfPeople" className="pull-right width-fifty bigger-font rounded-edges">
+            <select name="numberOfPeople" className="pull-right width-fifty bigger-font selectBox">
               <option value="3">3 pers - 750 kr</option>
               <option value="3">4 pers - 1000 kr</option>
               <option value="3">5 pers - 1250 kr</option>

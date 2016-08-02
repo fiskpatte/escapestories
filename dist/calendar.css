@@ -98,11 +98,6 @@
   padding-top: 4px;
 }
 
-.round {
-  border-radius: 50%;
-  margin: 10px;
-}
-
 .black-and-white {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);

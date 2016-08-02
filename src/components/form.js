@@ -61,21 +61,31 @@ class Form extends React.Component {
 
     render() {
       return (
-        <form id="bookForm" className="content">
-          {this.state.availableRooms.map((room, index) => (
-            <span key={index}><input type="radio" name="room" value={room} /> {room} </span>
-          ))}
-          <br></br>
-          <input id="nameinput" type="text" placeholder="Namn" />
-          <br></br>
-          <input id="emailinput" type="email" placeholder="Email" />
-          <br></br>
-          <input id="teleinput" type="tel" placeholder="Telefonnummer" />
-          <br></br>
-          <input id="couponinput" type="text" placeholder="Rabattkod (Valfri)" />
-          <br></br>
-          <span><button type="button">Tillbaka</button><button type="button" onClick={this.submit.bind(this)}>Boka</button></span>
-        </form>
+        <div className="content">
+          <form id="bookForm">
+            {this.state.availableRooms.map((room, index) => (
+              <span key={index}><input type="radio" name="room" value={room} /> {room} </span>
+            ))}
+            <br></br>
+            <input id="nameinput" className="form-control rounded-edges" type="text" placeholder="Namn" />
+            <br></br>
+            <input id="emailinput" className="form-control rounded-edges" type="email" placeholder="Email" />
+            <br></br>
+            <input id="teleinput" className="form-control rounded-edges" type="tel" placeholder="Telefonnummer" />
+            <br></br>
+            <input id="couponinput" className="form-control rounded-edges" type="text" placeholder="Rabattkod (Valfri)" />
+            <br></br>
+            <select name="numberOfPeople" className="pull-right width-fifty bigger-font rounded-edges">
+              <option value="3">3 pers - 750 kr</option>
+              <option value="3">4 pers - 1000 kr</option>
+              <option value="3">5 pers - 1250 kr</option>
+              <option value="3">6 pers - 1500 kr</option>
+            </select>
+            <br></br>
+            <br></br>
+            <span><button type="button">Tillbaka</button><button className="pull-right" type="button" onClick={this.submit.bind(this)}>Boka</button></span>
+          </form>
+        </div>
       );
     }
 }

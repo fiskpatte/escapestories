@@ -1,6 +1,6 @@
-fieldset {
+/*fieldset {
   overflow: hidden
-}
+}*/
 
 #contact-info {
   width: 400px;
@@ -11,7 +11,7 @@ fieldset {
   clear: none;
 }
 
-label {
+/*label {
   float: left;
   clear: none;
   display: block;
@@ -23,4 +23,25 @@ input.radio {
   float: left;
   clear: none;
   margin: 2px 0 0 2px;
+}*/
+
+#bookForm {
+  width: 500px;
+}
+
+.float-right{
+  float-right;
+}
+
+.width-fifty{
+  width: 50%;
+}
+
+.bigger-font {
+  font-size: 1.2em;
+  font-size: bold;
+}
+
+.rounded-edges {
+  border-radius: 20px;
 }

@@ -39,7 +39,7 @@ class Menu extends React.Component {
                             <span className="icon-bar"></span>
                         </button>
                     </div>
-                    <div id="nct" className="collapse navbar-collapse pull-right">
+                    <div id="nct" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav rounded-border list-margin list-text">
                             <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link glyphs glyphicon glyphicon-home" href="#"></a></li>
                             <li onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link glyphs glyphicon glyphicon-calendar" href="#"></a></li>

@@ -61,7 +61,7 @@ class Form extends React.Component {
 
     render() {
       return (
-        <form id="bookForm">
+        <form id="bookForm" className="content">
           {this.state.availableRooms.map((room, index) => (
             <span key={index}><input type="radio" name="room" value={room} /> {room} </span>
           ))}

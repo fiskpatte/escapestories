@@ -56,14 +56,15 @@
     height: 40px;
     margin-right: 10px;
     margin-left: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    margin-top: 5px;
     outline: none;
 }
 
-.calendar-button:hover {
+/*.calendar-button:hover {
   background-color: #243977;
   color: white;
-}
+}*/
 
 .shrink-to-fit {
      display: inline-block;
@@ -90,9 +91,11 @@
 }
 
 .week-number-p{
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-weight: bold;
   color: white;
+  margin-bottom: 5px;
+  padding-top: 4px;
 }
 
 .round {

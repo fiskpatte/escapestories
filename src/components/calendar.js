@@ -50,12 +50,7 @@ class Calendar extends React.Component {
                     {date: "", data: {}, dbId: "", readableDate: ""},
                     {date: "", data: {}, dbId: "", readableDate: ""},
                     {date: "", data: {}, dbId: "", readableDate: ""}
-                  ],
-                  showbreakin: true,
-                  showcoverup: true,
-                  showmanuscript: true,
-                  test: "hej"
-                  };
+                  ]};
 
     var todaysDate = new Date();
     todaysDateAsString = this.convertDateToDbString(todaysDate);
@@ -349,7 +344,6 @@ class Calendar extends React.Component {
     var slotToUpdate;
     for(var i in this.state.timeSlots){
       if(this.state.timeSlots[i].dbId == id){
-        console.log(id);
         slotToUpdate = this.state.timeSlots[i];
         break;
       }
@@ -421,36 +415,12 @@ class Calendar extends React.Component {
 
   }
 
-  toggleRoom(room){
-    console.log(this.state["test"]);
-    switch(room){
-      case "breakin":
-        $("#breakinImg").toggleClass("black-and-white");
-        $("#breakinImg").toggleClass("shiny");
-        break;
-      case "coverup":
-        $("#coverupImg").toggleClass("black-and-white");
-        $("#coverupImg").toggleClass("shiny");
-        break;
-      case "manuscript":
-        $("#manuscriptImg").toggleClass("black-and-white");
-        $("#manuscriptImg").toggleClass("shiny");
-        break;
-    }
 
-    var newState = this.state;
-    newState["show" + room] = newState["show" + room] == true ? false : true;
-    this.setState(newState);
-  }
 
   render() {
     return (
       <div className="shrink-to-fit table-container content">
-        <div>
-          <img id="manuscriptImg" className="round shiny" src="manuscript.png" onClick={this.toggleRoom.bind(this, "manuscript")}/>
-          <img id="coverupImg"    className="round shiny" src="coverup.png" onClick={this.toggleRoom.bind(this, "coverup")}/>
-          <img id="breakinImg"    className="round shiny" src="breakin.png" onClick={this.toggleRoom.bind(this, "breakin")}/>
-        </div>
+
         {/*<button onClick={this.generateTimeslotsForOneMonthButtonClicked.bind(this)}>Generera timeslots för 1 månad framåt</button>*/}
         <div className="flex">
           <button className="fa fa-arrow-left calendar-button" onClick={this.navigateToPrevWeek.bind(this)}></button>
@@ -474,9 +444,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["0900"] }
                                                                     dayId={day.dbId}
                                                                     time="0900"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
               ))}
             </tr>
@@ -485,9 +452,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1030"]}
                                                                     dayId={day.dbId}
                                                                     time="1030"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)}  /> }</td>
               ))}
             </tr>
@@ -496,9 +460,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1200"]}
                                                                     dayId={day.dbId}
                                                                     time="1200"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
@@ -507,9 +468,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1330"]}
                                                                     dayId={day.dbId}
                                                                     time="1330"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
@@ -518,9 +476,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1500"]}
                                                                     dayId={day.dbId}
                                                                     time="1500"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
@@ -529,9 +484,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1630"]}
                                                                     dayId={day.dbId}
                                                                     time="1630"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
@@ -540,9 +492,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1800"]}
                                                                     dayId={day.dbId}
                                                                     time="1800"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
@@ -551,9 +500,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["1930"]}
                                                                     dayId={day.dbId}
                                                                     time="1930"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>
@@ -562,9 +508,6 @@ class Calendar extends React.Component {
                 <td className="calendar-td" key={index}>{<Timeslot  slot={day.data["2100"]}
                                                                     dayId={day.dbId}
                                                                     time="2100"
-                                                                    showcoverup={this.state.showcoverup}
-                                                                    showbreakin={this.state.showbreakin}
-                                                                    showmanuscript={this.state.showmanuscript}
                                                                     bookCallback={this.bookRoomButtonCallback.bind(this)} /> }</td>
               ))}
             </tr>

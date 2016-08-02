@@ -12,8 +12,13 @@ class RoomChoise extends React.Component {
 
   render() {
     return (
-      <div className="fit-childs">
-        <img className="round shiny" src={this.state.imgsource}/>        
+      <div className="menu-choise-div fit-childs">
+        <img className="rounded-10-perc shiny" src={this.state.imgsource}/>
+        <br></br>
+
+        <i className="fa fa-check center-object big-green" aria-hidden="true"></i>
+        <br></br>
+
       </div>
     );
   }

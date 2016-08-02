@@ -66,10 +66,12 @@ class Form extends React.Component {
       return (
         <div className="content">
           <form id="bookForm">
-            {this.state.availableRooms.map((room, index) => (
-              <div key={index}><RoomChoise room={room} /></div>
-              /*<span key={index}><input type="radio" name="room" value={room} /> {room} </span>*/
-            ))}
+            <div className="">
+              {this.state.availableRooms.map((room, index) => (
+                <div key={index}><RoomChoise room={room} /></div>
+                /*<span key={index}><input type="radio" name="room" value={room} /> {room} </span>*/
+              ))}
+            </div>
             <br></br>
             <input id="nameinput" className="form-control rounded-edges" type="text" placeholder="Namn" />
             <br></br>
@@ -78,7 +80,7 @@ class Form extends React.Component {
             <input id="teleinput" className="form-control rounded-edges" type="tel" placeholder="Telefonnummer" />
             <br></br>
             <input id="couponinput" className="form-control rounded-edges" type="text" placeholder="Rabattkod (Valfri)" />
-            <br></br>
+            <br></br><br></br>
             <select name="numberOfPeople" className="pull-right width-fifty bigger-font selectBox">
               <option value="3">3 pers - 750 kr</option>
               <option value="3">4 pers - 1000 kr</option>

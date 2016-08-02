@@ -21,3 +21,25 @@
 .fit-childs {
   display: inline-block;
 }
+
+.menu-choise-div {
+  float: left;
+}
+
+.rounded-10-perc {
+  border-radius: 10%;
+}
+
+.center-object {
+  display:table;
+  margin:0 auto;
+}
+
+.big-green {
+  font-size: 5em;
+  color: #00FF00;
+}
+
+.transparent {
+  visibility: hidden;
+}

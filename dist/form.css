@@ -25,6 +25,51 @@ input.radio {
   margin: 2px 0 0 2px;
 }*/
 
+.room-image {
+  margin: 10px;
+}
+
+.black-and-white {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.shiny {
+  -moz-box-shadow: 0 0 15px #0066ff;
+  -webkit-box-shadow: 0 0 15px #0066ff;
+  box-shadow: 0px 0px 15px #0066ff;
+}
+
+.center-in-div{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.fit-childs {
+  display: inline-block;
+}
+
+.menu-choise-div {
+  float: left;
+}
+
+.rounded-5-perc {
+  border-radius: 10%;
+}
+
+.center-object {
+  display:table;
+  margin:0 auto;
+}
+
+.float-center{
+  float-center;
+}
+
+.transparent {
+  visibility: hidden;
+}
+
 #bookForm {
   max-width: 600px;
 }
@@ -55,4 +100,8 @@ input.radio {
 
 select:focus {
     outline: 0;
+}
+
+.min-width-600 {
+  min-width: 600px;
 }

@@ -1,26 +1,21 @@
 import React from 'react';
-
-import RoomChoise from './roomchoise';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import sweetAlert from 'sweetalert';
 
 var database = firebase.database();
 var slotRef;
 var bookingsRef = database.ref('bookings');
-var time;
-var slot;
 
 class Form extends React.Component {
     constructor(props){
         super(props);
         var rooms = this.props.availableRooms;
-        time = this.props.params.time;
-        slot = this.props.params.slot;
+
         this.state = {availableRooms : [], activeRoom: "" };
-        slotRef = database.ref('days').child(slot).child(time);
+        slotRef = database.ref('days').child(this.props.params.slot).child(this.props.params.time);
     }
 
     componentDidMount(){
-      time = this.props.params.time;
-      slot = this.props.params.slot;
       var self = this;
       slotRef.on("value", function(snapshot){
         var data = snapshot.val();
@@ -35,10 +30,24 @@ class Form extends React.Component {
         var newState = self.state;
         var newRoom;
         // Kolla om det inte finns några lediga rum kvar.
+        // Du har bytt hela innehållet i din kommentar. Nyss stod det "Förhoppningsvis kommer det vara över om två år", eller liknande. Du syftade naturligtvis på att SD då ska få så mycket inflytande att de stoppar tiggarna. Varför raderar du inte din kommentar och skriver en ny istället för att totakt redigera en som redan är besvarad?
         // Detta kan ske mellan att användaren klickar på "BOKA"
         // i kalendern och att man fullföljer sin bokning.
         if(openSlots.length == 0){
           // En fin popup som säger att det sista rummet hann bli bokat.
+          alert("Någon hann före. Hoppas det passar med en annan tid :)");
+          browserHistory.push("/boka");
+          // sweetAlert({
+          //   title: 'Ooooops',
+          //   text: "Någon hann före. Hoppas det passar med en annan tid :)",
+          //   type: 'warning',
+          //   showCancelButton: false,
+          //   confirmButtonColor: '#3085d6',
+          //   confirmButtonText: 'Okej'
+          // }).then(function() {
+          //   browserHistory.push('/boka');
+          //   console.log("Kom in här");
+          // });
           // browserHistory.push(/boka);
         }
         // Kollar om det val man gjort blivit taget, men det fortfarande finns
@@ -47,10 +56,12 @@ class Form extends React.Component {
           // Byt aktivt rum till första bästa.
           newRoom = openSlots[0];
           newState.activeRoom = newRoom;
+          newState.availableRooms = openSlots;
+          self.setState(newState);
+        } else {
+          newState.availableRooms = openSlots;
+          self.setState(newState);
         }
-
-        newState.availableRooms = openSlots;
-        self.setState(newState);
       });
     }
 
@@ -79,9 +90,11 @@ class Form extends React.Component {
         $("#idcoverup").removeClass("shiny");
       }
     }
-    
+
     componentWillUnmount(){
       slotRef.off();
+      slotRef.off();
+      bookingsRef.off();
     }
 
     submit(){
@@ -120,23 +133,18 @@ class Form extends React.Component {
       return (
         <div className="content">
           <form id="bookForm">
-            <p>this.state.activeRoom: {this.state.activeRoom}</p>
-            <div className="">
-
-              {this.state.availableRooms.map((room, index) => (
-                <div key={index} className="menu-choise-div fit-childs">
-                  <img  id={"id"+room}
-                        className="room-image rounded-5-perc"
-                        src={"../../" + room + ".png"}
-                        onClick={this.chooseRoomCallback.bind(this, room)} />
-                  <br></br>
-                  <p>Room: {room}</p>
-                </div>
-              ))}
-
-
-
-
+            <div className="min-width-600">
+              <div className="fit-childs center-object">
+                {this.state.availableRooms.map((room, index) => (
+                  <div key={index} className="menu-choise-div fit-childs">
+                    <img  id={"id"+room}
+                          className="room-image rounded-5-perc"
+                          src={"../../" + room + ".png"}
+                          onClick={this.chooseRoomCallback.bind(this, room)} />
+                    <br></br>
+                  </div>
+                ))}
+              </div>
             </div>
             <br></br>
             <input id="nameinput" className="form-control rounded-edges" type="text" placeholder="Namn" />

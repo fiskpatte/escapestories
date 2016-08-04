@@ -118,9 +118,7 @@ class Form extends React.Component {
     }
 
     backButtonClicked(){
-      var newState = this.state;
-      newState.ost = "DET FUNKAR";
-      this.setState(newState);
+      browserHistory.push("/boka");
     }
 
     chooseRoomCallback(room){
@@ -134,27 +132,22 @@ class Form extends React.Component {
         <div className="content">
           <form id="bookForm">
             <div className="min-width-600">
-              <div className="fit-childs center-object">
-                {this.state.availableRooms.map((room, index) => (
-                  <div key={index} className="menu-choise-div fit-childs">
-                    <img  id={"id"+room}
-                          className="room-image rounded-5-perc"
-                          src={"../../" + room + ".png"}
-                          onClick={this.chooseRoomCallback.bind(this, room)} />
-                    <br></br>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <br></br>
+              <h4>Vänligen fyll i dina uppgifter för att slutföra bokningen</h4>
+              <br></br>
+
+
             <input id="nameinput" className="form-control rounded-edges" type="text" placeholder="Namn" />
+            <br></br>
             <br></br>
             <input id="emailinput" className="form-control rounded-edges" type="email" placeholder="Email" />
             <br></br>
+            <br></br>
             <input id="teleinput" className="form-control rounded-edges" type="tel" placeholder="Telefonnummer" />
             <br></br>
+            <br></br>
             <input id="couponinput" className="form-control rounded-edges" type="text" placeholder="Rabattkod (Valfri)" />
-            <br></br><br></br>
+            <br></br>
+            <br></br>
             <select name="numberOfPeople" className="form-control pull-right width-fifty bigger-font selectBox">
               <option value="3">3 pers - 750 kr</option>
               <option value="3">4 pers - 1000 kr</option>
@@ -162,8 +155,26 @@ class Form extends React.Component {
               <option value="3">6 pers - 1500 kr</option>
             </select>
             <br></br>
-            <br></br>
-            <span><button type="button" onClick={this.backButtonClicked.bind(this)}>Tillbaka</button><button className="pull-right" type="button" onClick={this.submit.bind(this)}>Boka</button></span>
+            <h5>Välj ett rum:</h5>
+
+            <div className="fit-childs center-object">
+              {this.state.availableRooms.map((room, index) => (
+                <div key={index} className="menu-choise-div fit-childs">
+                  <img  id={"id"+room}
+                        className="room-image rounded-5-perc"
+                        src={"../../" + room + ".png"}
+                        onClick={this.chooseRoomCallback.bind(this, room)} />
+                  <br></br>
+                </div>
+              ))}
+            </div>
+          </div>
+          <br></br>
+
+            <div className="button-span">
+              <span><button type="button" className="btn btn-primary btn-xlarge width-100" onClick={this.backButtonClicked.bind(this)}>Tillbaka</button><button type="button" className="btn btn-success pull-right btn-xlarge width-200" onClick={this.submit.bind(this)}>Boka!</button></span>
+            </div>
+
           </form>
         </div>
       );

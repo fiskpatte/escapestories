@@ -51,7 +51,6 @@ class RoomChoise extends React.Component {
               onClick={this.focusOnMe.bind(this, this.state.myIndex)} />
         <br></br>
         <p>Index: {this.state.myIndex}</p>
-
       </div>
     );
   }

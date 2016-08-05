@@ -35,20 +35,20 @@ class Form extends React.Component {
         // i kalendern och att man fullföljer sin bokning.
         if(openSlots.length == 0){
           // En fin popup som säger att det sista rummet hann bli bokat.
-          alert("Någon hann före. Hoppas det passar med en annan tid :)");
-          browserHistory.push("/boka");
-          // sweetAlert({
-          //   title: 'Ooooops',
-          //   text: "Någon hann före. Hoppas det passar med en annan tid :)",
-          //   type: 'warning',
-          //   showCancelButton: false,
-          //   confirmButtonColor: '#3085d6',
-          //   confirmButtonText: 'Okej'
-          // }).then(function() {
-          //   browserHistory.push('/boka');
-          //   console.log("Kom in här");
-          // });
-          // browserHistory.push(/boka);
+          //alert("Någon hann före. Hoppas det passar med en annan tid :)");
+          //browserHistory.push("/boka");
+          sweetAlert({
+            title: 'Ooooops',
+            text: "Någon hann före. Hoppas det passar med en annan tid :)",
+            type: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Okej'
+          },
+          function(){
+            browserHistory.push('/boka');
+          });
+
         }
         // Kollar om det val man gjort blivit taget, men det fortfarande finns
         // något annat rum ledigt.

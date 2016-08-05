@@ -41,11 +41,8 @@
      line-height: 22px;
      text-align: center;
      width: 81.2px;
+     height: 50px;
  }
-
-.calendar-td {
-    border-left: 1px solid #ccc;
-}
 
 .calendar-button {
     background: #f9fdfd;

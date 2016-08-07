@@ -74,15 +74,10 @@
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     background-color: #333;
-    margin-top: 49px;
-    margin-left: 153px;
-    position: absolute;
 }
 
 .flex {
     display: inline-flex;
-    position: relative;
-    left: 26%;
     align-items: center;
 }
 
@@ -92,4 +87,8 @@
   color: white;
   margin-bottom: 5px;
   padding-top: 4px;
+}
+
+.content-wrapper {
+    text-align: center;
 }

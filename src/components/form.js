@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import sweetAlert from 'sweetalert';
+
 
 var database = firebase.database();
 var slotRef;
@@ -172,7 +172,7 @@ class Form extends React.Component {
           <br></br>
 
             <div className="button-span">
-              <span><button type="button" className="btn btn-primary btn-xlarge width-100" onClick={this.backButtonClicked.bind(this)}>Tillbaka</button><button type="button" className="btn btn-success pull-right btn-xlarge width-200" onClick={this.submit.bind(this)}>Boka!</button></span>
+              <span><button type="button" className="btn btn-primary btn-xlarge" onClick={this.backButtonClicked.bind(this)}>Tillbaka</button><button type="button" className="btn btn-success pull-right btn-xlarge" onClick={this.submit.bind(this)}>Boka!</button></span>
             </div>
 
           </form>

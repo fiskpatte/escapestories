@@ -54,10 +54,10 @@ class Menu extends React.Component {
                     </div>
                     <div id="nct" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav rounded-border list-margin list-text">
-                            <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hem</a></li>
-                            <li onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Boka</a></li>
-                            <li onClick={this.navigateToHowToPlay.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Hur spelar man?</a></li>
-                            <li onClick={this.navigateToAbout.bind(this)}><a data-toggle="tab" className="nav-link" href="#">Om oss</a></li>
+                            <li onClick={this.navigateToHome.bind(this)}><a data-toggle="tab" className="nav-link button-color-white" href="#">Hem</a></li>
+                            <li onClick={this.navigateToBooking.bind(this)}><a data-toggle="tab" className="nav-link button-color-white" href="#">Boka</a></li>
+                            <li onClick={this.navigateToHowToPlay.bind(this)}><a data-toggle="tab" className="nav-link button-color-white" href="#">Hur spelar man?</a></li>
+                            <li onClick={this.navigateToAbout.bind(this)}><a data-toggle="tab" className="nav-link button-color-white" href="#">Om oss</a></li>
                         </ul>
                     </div>
                 </div>

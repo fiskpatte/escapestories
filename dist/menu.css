@@ -20,23 +20,27 @@
 
 .list-text:not(.glyphs) {
     font-size: medium;
-    font-family: cursive;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
 }
 
-a:active, a:hover {
+.button-color-white {
+    color: white !important
+}
+
+/*a:active, a:hover {
     border: 1px solid #f5c65e !important;
 }
-
+*/
 .list-margin {
     margin-top: 4px !important;
 }
 
 .navbar-default .navbar-nav > .active > a {
-    background-color: #cb9f3c !important;
-    color: #FFFFFF !important;
+    background-color: white !important;
+    color: #333333 !important;
 }
 
 .navbar-layout {
-    border-bottom: 1px solid #f5c65e;
-    background-color: #ffffff;
+    background-color: #333333;
 }

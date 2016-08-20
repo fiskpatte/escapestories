@@ -8,7 +8,7 @@ class Contactinfo extends React.Component {
 
     render() {
         return (
-            <div className="content">
+            <div>
                 <div className="contactinfo-description">
                     <h1>Vilka är vi?</h1>
                     <p>Fantastiska rum är endast en del av pusselbiten. God kundservice är nyckeln till en oförglömlig upplevelse, och våra GameMasters är här så att vi kan garantera detta.</p>

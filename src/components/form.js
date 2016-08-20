@@ -129,7 +129,7 @@ class Form extends React.Component {
 
     render() {
       return (
-        <div className="content">
+          <div>
           <form id="bookForm">
             <div className="min-width-600">
               <h4>Vänligen fyll i dina uppgifter för att slutföra bokningen</h4>

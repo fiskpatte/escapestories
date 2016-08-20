@@ -79,5 +79,13 @@
 
 .content-wrapper {
     text-align: center;
+
+    color: #fff7f7;
+    display: block;
+    margin:auto;
     margin-top: 70px;
+}
+
+.center-content {
+
 }

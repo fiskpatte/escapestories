@@ -1,4 +1,15 @@
 .content {
-    margin-top: 70px;
+
     color: #fff7f7;
+    margin: auto;
+    display: block;
+    width: 1000px;
+    margin:auto;
+    margin-top: 70px;
+    background-color: red;
+}
+
+.center-this-shit {
+  display: inline-block;
+  text-align: center;
 }

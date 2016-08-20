@@ -40,7 +40,7 @@ class Menu extends React.Component {
                 <div className="container-fluid navbar-layout">
                     <div className="navbar-header">
                         <img onClick={this.logoClick.bind(this)}
-                             src="logo.png" 
+                             src="logo.png"
                              className="brand-logo navbar-brand image-cursor"></img>
                         <button type="button"
                                 onClick={this.toggleClick.bind(this)}
@@ -62,7 +62,11 @@ class Menu extends React.Component {
                     </div>
                 </div>
             </nav>
-            {this.props.children}
+            <div className="content">
+              <div className="center-this-shit">
+                {this.props.children}
+              </div>
+            </div>
         </div>
       );
   }

@@ -132,7 +132,7 @@ class Form extends React.Component {
           <div>
           <form id="bookForm">
             <div className="min-width-600">
-              <h4>Vänligen fyll i dina uppgifter för att slutföra bokningen</h4>
+              <h4 className="text-align-left bold">Vänligen fyll i dina uppgifter för att slutföra bokningen</h4>
               <br></br>
 
 
@@ -155,7 +155,8 @@ class Form extends React.Component {
               <option value="3">6 pers - 1500 kr</option>
             </select>
             <br></br>
-            <h5>Välj ett rum:</h5>
+            <br></br>
+            <h4 className="text-align-left">Välj ett rum:</h4>
 
             <div className="fit-childs center-object">
               {this.state.availableRooms.map((room, index) => (
@@ -172,7 +173,9 @@ class Form extends React.Component {
           <br></br>
 
             <div className="button-span">
-              <span><button type="button" className="btn btn-primary btn-xlarge" onClick={this.backButtonClicked.bind(this)}>Tillbaka</button><button type="button" className="btn btn-success pull-right btn-xlarge" onClick={this.submit.bind(this)}>Boka!</button></span>
+              <span>
+                <button type="button" className="btn btn-primary btn-xlarge" onClick={this.backButtonClicked.bind(this)}>Tillbaka</button>
+                <button type="button" className="btn btn-success pull-right btn-xlarge margin-left-100" onClick={this.submit.bind(this)}>Boka!</button></span>
             </div>
 
           </form>

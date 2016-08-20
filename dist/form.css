@@ -11,19 +11,9 @@
   clear: none;
 }
 
-/*label {
-  float: left;
-  clear: none;
-  display: block;
-  padding: 2px 1em 0 0;
+.margin-left-100 {
+    margin-left: 100px;
 }
-
-input[type=radio],
-input.radio {
-  float: left;
-  clear: none;
-  margin: 2px 0 0 2px;
-}*/
 
 .room-image {
   margin: 10px;
@@ -80,8 +70,8 @@ select {
 
 }
 
-.float-right{
-  float-right;
+.text-align-left {
+  text-align: left;
 }
 
 .width-fifty{
@@ -90,8 +80,11 @@ select {
 
 .bigger-font {
   font-size: 1.2em;
-  font-size: bold;
   padding: 5px;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 
@@ -128,8 +121,6 @@ select:focus {
 .width-100 {
   width: 120px;
 }
-
-
 
 .button-span {
   margin-top: 16px;

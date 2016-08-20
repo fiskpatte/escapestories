@@ -51,10 +51,6 @@
     outline: none;
 }
 
-.shrink-to-fit {
-     display: inline-block;
- }
-
 .table-container {
     border: 2px solid;
     border-color: rgba(29, 22, 12, 0.37);
@@ -62,6 +58,7 @@
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     background-color: #333;
+    margin-top: 100px;
 }
 
 .flex {
@@ -84,8 +81,4 @@
     display: block;
     margin:auto;
     margin-top: 70px;
-}
-
-.center-content {
-
 }
